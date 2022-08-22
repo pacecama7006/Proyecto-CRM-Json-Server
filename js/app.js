@@ -1,4 +1,4 @@
-import { obtenerClientes } from "./API.js";
+import { obtenerClientes, eliminarCliente } from "./API.js";
 (function(){
     // Seleccionamos el listado de clientes
     const listado = document.querySelector('#listado-clientes');
@@ -6,7 +6,8 @@ import { obtenerClientes } from "./API.js";
     //Registramos evento en el dom
     document.addEventListener('DOMContentLoaded', mostrarClientes);
 
-    
+    //Registamos evento en el listado
+    listado.addEventListener('click', confirmarEliminar);
 
     async function mostrarClientes() {
         // console.log('Desde mostrar clientes');
@@ -41,4 +42,27 @@ import { obtenerClientes } from "./API.js";
         });
     }
     // Fin mostrarClientes
+
+    // Función que elimina un registro. Como utilizamos delegation, mando el el para prevenir
+    function confirmarEliminar(e) {
+        /**Si el elemento que damos click tiene la clase eliminar */
+        if (e.target.classList.contains('eliminar')) {
+            // console.log('Diste click en eliminar');
+
+            // Leemos el cliente donde hicimos clic con el dataset que tienen los enlaces de
+            // eliminar
+            const clienteId = parseInt(e.target.dataset.cliente);
+            // console.log(clienteId);
+
+            // Confirmamos con la función de confirm de javascript
+            const confirmar = confirm('¿Deseas eliminar este registro?');
+
+            // En caso de que se diga que si
+            if (confirmar) {
+                // console.log('Eliminando...', clienteId);
+                eliminarCliente(clienteId);
+            }
+        }
+    }
+    //Fin confirmarEliminar
 })();
