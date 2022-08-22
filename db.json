@@ -1,11 +1,25 @@
 {
   "clientes": [
     {
-      "nombre": "Juan NUEVO!",
-      "email": "correo2@correo.com",
-      "telefono": "12",
-      "empresa": "12212",
-      "id": 26
+      "nombre": "Paulo Cesar",
+      "email": "pacecama7006@gmail.com",
+      "telefono": "3531263597",
+      "empresa": "La libertad",
+      "id": 1
+    },
+    {
+      "nombre": "Erika",
+      "email": "lilie041@hotmail.com",
+      "telefono": "3531263597",
+      "empresa": "La ayuda",
+      "id": 2
+    },
+    {
+      "nombre": "Jonathan Casillas",
+      "email": "correo1@correo.com",
+      "telefono": "3531263597",
+      "empresa": "Uber",
+      "id": 3
     }
   ]
 }
