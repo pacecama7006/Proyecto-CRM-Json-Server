@@ -1,4 +1,4 @@
-import { mostrarAlerta } from "./funciones.js";
+import { mostrarAlerta, validar } from "./funciones.js";
 import { nuevoCliente } from "./API.js";
 // Protegemos todo lo de este archivo con una función iffi
 // Para que sólo este archivo las pueda leer
@@ -40,9 +40,5 @@ import { nuevoCliente } from "./API.js";
     }
     // Fin validar cliente
 
-    function validar(obj) {
-        // Si dentro de mi objeto hay un campo vacío. Me arroja true
-        return !Object.values(obj).every(input => input !== '');
-    }
-    // Fin validar
+    
 })();

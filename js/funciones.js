@@ -19,3 +19,10 @@ export function mostrarAlerta(mensaje) {
         }, 3000);
     }
 }
+// Fin mostrarAlerta
+
+export function validar(obj) {
+    // Si dentro de mi objeto hay un campo vacío. Me arroja true
+    return !Object.values(obj).every(input => input !== '');
+}
+// Fin validar

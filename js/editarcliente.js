@@ -1,4 +1,6 @@
-import { obtenerCliente } from "./API.js";
+import { obtenerCliente, editarCliente } from "./API.js";
+import { mostrarAlerta, validar } from "./funciones.js";
+
 (function(){
     // Variables del formulario
     const nombreInput = document.querySelector('#nombre');
@@ -26,6 +28,10 @@ import { obtenerCliente } from "./API.js";
 
         mostrarCliente(cliente);
 
+        // Submit al formulario
+        const formulario = document.querySelector('#formulario');
+        formulario.addEventListener('submit', validarCliente);
+
     });
 
     function mostrarCliente(cliente) {
@@ -41,4 +47,35 @@ import { obtenerCliente } from "./API.js";
 
     }
     // fin de mostrarCliente
+
+    function validarCliente(e) {
+        e.preventDefault();
+
+        /**Puedo crear un objeto con las propiedades de los inputs, pero deben
+         * llamarse iguales
+         */
+         const cliente = {
+            nombre: nombreInput.value,
+            email: emailInput.value,
+            telefono: telefonoInput.value,
+            empresa: empresaInput.value,
+            id: parseInt(idInput.value)
+        };
+
+        // console.log(cliente);
+
+        // console.log(!Object.values(cliente).every(input => input !== ''));
+        // Valido el formulario
+        if (validar(cliente)) {
+            // Si hay un campo vacío
+            // console.log('Todos los campos son obligatorios');
+            mostrarAlerta('Todos los campos son obligatorios');
+            return;
+        }
+
+        // Reescribe el objeto
+        editarCliente(cliente);
+    }
+    // Fin validarCliente
+
 })();
